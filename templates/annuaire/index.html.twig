@@ -4,18 +4,21 @@
 
 {% block body %}
     <section class="posts mt-2">
-        <article class="card p-3" style="width: 435px">
-            <div class="d-flex flex-row">
-                <img class="rounded-circle" style="width: 45px; height: 45px;" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="profil picture">
-               <div class="px-3">
-                <h5 class="mb-0">Nom Prénom</h4>
-                <div class="metadata small">10/05/2018 à 19:00 - <span>M1TL</span></div>
-               </div>
-            </div>
-            <div class="content mt-2">
-                <p>Voici à quoi ressemble notre dernier projet avec les M1TL</p>
-                <img style="width: 100%" class="img-responsive" src="https://media.istockphoto.com/photos/circuit-blue-board-background-copy-space-computer-data-technology-picture-id1340728386?k=20&m=1340728386&s=612x612&w=0&h=rndn_XMSEUAudwxv5dXQXC2-Vu6262xZFeY7PBV0XVc=" alt="image">
-            </div>
-        </article>
+        {% for post in posts %}
+            <article class="card p-3 my-2" style="width: 435px">
+                <div class="d-flex flex-row">
+                    <img class="rounded-circle" style="width: 45px; height: 45px;" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="profil picture">
+                <div class="px-3">
+                    <h5 class="mb-0">Julie Castier</h4>
+                    <div class="metadata small text-muted">{{ post.createdAt | date('d/m/Y')}} à {{ post.createdAt | date('H:i')}} - <span>M1TL</span></div>
+                </div>
+                </div>
+                <div class="content my-2">
+                    <h6 class="card-subtitle my-2">{{ post.name }}</h6>
+                    <div class="mb-2">{{ post.content }}</div>
+                    <img style="width: 100%" class="img-responsive" src={{ post.image }} alt="image">
+                </div>
+            </article>
+        {% endfor %}
     </section>
 {% endblock %}

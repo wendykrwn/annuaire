@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Post;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AnnuaireController extends AbstractController
 {
@@ -13,8 +14,13 @@ class AnnuaireController extends AbstractController
      */
     public function index(): Response
     {
+        $repo = $this->getDoctrine()->getRepository(Post::class);
+
+        $posts = $repo->findAll();
+
         return $this->render('annuaire/index.html.twig', [
             'controller_name' => 'AnnuaireController',
+            'posts' => $posts
         ]);
     }
 
