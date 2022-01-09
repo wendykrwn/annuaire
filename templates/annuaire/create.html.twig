@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>
+        {% if editMode %}
+            Modification du post
+        {% else %}
+            Création d'un post
+        {% endif %}
+    </h1>
+    {{ form_start(formPost) }}
+
+        {{ form_row(formPost.name, {'attr': {'placeholder': "Nom du post"}}) }}
+        {{ form_row(formPost.content, {'attr': {'placeholder': "Description du post "}}) }}
+        {{ form_row(formPost.image, {'attr': {'placeholder': "Url de l'image"}}) }}
+
+        <button type="Submit" class="btn btn-primary mt-2">
+            {% if editMode %}
+                Enregister
+            {% else %}
+                Publier
+            {% endif %}
+        </button>    
+
+    {{ form_end(formPost) }}
+{% endblock %}
