@@ -78,6 +78,12 @@ class User implements UserInterface
      */
     public $confirm_password;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $group_name;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -208,5 +214,17 @@ class User implements UserInterface
 
     public function getRoles() {
         return ['ROLE_USER'];
+    }
+
+    public function getGroupName(): ?Group
+    {
+        return $this->group_name;
+    }
+
+    public function setGroupName(?Group $group_name): self
+    {
+        $this->group_name = $group_name;
+
+        return $this;
     }
 }
