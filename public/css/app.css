@@ -4,3 +4,13 @@ body{
 .mb-2, .my-2{
     margin: auto;
 }
+.navbar{
+    background-color: #007bff;
+    
+}
+.navbar a{
+    color: white;
+}
+.container{
+    margin-top: 5%;
+}
