@@ -15,10 +15,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AnnuaireController extends AbstractController
 {
     /**
-     * @Route("user/posts/", name="posts")
+     * @Route("/posts", name="posts")
      */
     public function index(PostRepository $repo): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         
         $posts = $repo->findAll();
 

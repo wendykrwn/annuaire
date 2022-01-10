@@ -22,6 +22,9 @@ class SecurityController extends AbstractController
         if(!$user){
             $user = new User();
         }
+        else{
+            $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        }
 
         $form = $this->createForm(RegistrationType::class, $user);
 
