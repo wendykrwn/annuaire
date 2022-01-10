@@ -30,7 +30,7 @@
                 <div class="d-flex align-items-center" id="navbarColor01">
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                      <a class="nav-link" href="{{ path('posts',{id: app.user.id} ) }}">Posts
+                      <a class="nav-link" href="{{ path('posts') }}">Posts
                         <span class="visually-hidden">(current)</span>
                       </a>
                     </li>
@@ -38,21 +38,21 @@
                       <a class="nav-link" href="{{ path('post_create') }}">Créer un post</a>
                     </li>
 
-                    {% if not app.user %}
                       <li class="nav-item">
                         <a class="nav-link" href= {{path('user_show',{id: app.user.id})}} >Profil</a>
                       </li>
-                  {% else %}
+                       <li class="nav-item">
+                        <a class="nav-link" href= {{path('users')}} >Réseau</a>
+                      </li>
                       <li class="nav-item">
                         <a class="nav-link" href= {{path('security_logout')}} >Deconnexion</a>
                       </li>
-                  {% endif %}
                   </ul>
                 </div>
               </div>
             </nav>
         {% else %}
-             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+             <nav class="navbar navbar-expand-lg navbar-default bg-primary fixed-top">
               <div class="container-fluid">
                 <a class="navbar-brand" href="/">pas connecté</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">

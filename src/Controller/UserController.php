@@ -16,6 +16,8 @@ class UserController extends AbstractController
      */
     public function index(UserRepository $repo): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $users = $repo->findAll();
 
         return $this->render('user/index.html.twig', [
@@ -29,6 +31,8 @@ class UserController extends AbstractController
      * @Route("/user/{id}", name="user_show")
      */
     public function show(User $user) {
+
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         return $this->render('user/show.html.twig', [
             'user' => $user,
