@@ -8,10 +8,11 @@
         {% for post in posts %}
             <article class="card p-3 my-2" style="width: 435px">
                 <div class="d-flex flex-row">
-                    <img class="rounded-circle" style="width: 45px; height: 45px;" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="profil picture">
+                        <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ post.user.image ? post.user.image : "https://img.myloview.fr/stickers/humain-homme-personne-avatar-profil-utilisateur-vector-icon-illustration-700-80657983.jpg" }}" alt="profil picture">
+
                 <div class="px-3">
-                    <h5 class="mb-0">Julie Castier</h4>
-                    <div class="metadata small text-muted">{{ post.createdAt | date('d/m/Y')}} à {{ post.createdAt | date('H:i')}} - <span>M1TL</span></div>
+                    <h5 class="mb-0">{{post.user.firstName}} {{post.user.lastName}}</h4>
+                    <div class="metadata small text-muted">{{ post.createdAt | date('d/m/Y')}} à {{ post.createdAt | date('H:i')}} - <span>{{ post.user.groupName.name}}</span></div>
                 </div>
                 </div>
                 <div class="content my-2">
