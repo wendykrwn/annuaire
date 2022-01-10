@@ -20,8 +20,7 @@ class AnnuaireController extends AbstractController
     public function index(PostRepository $repo): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        
-        $posts = $repo->findAll();
+        $posts = $repo->findBy(array(), array('createdAt' =>'DESC'));
 
         
         return $this->render('annuaire/index.html.twig', [
