@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Entity\User;
 use App\Form\PostType;
 use App\Repository\PostRepository;
 use Doctrine\Persistence\ObjectManager;
@@ -14,17 +15,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AnnuaireController extends AbstractController
 {
     /**
-     * @Route("/posts", name="posts")
+     * @Route("user/posts/", name="posts")
      */
     public function index(PostRepository $repo): Response
     {
+        
         $posts = $repo->findAll();
 
+        
         return $this->render('annuaire/index.html.twig', [
             'controller_name' => 'AnnuaireController',
             'posts' => $posts
         ]);
     }
+
+    
+    
 
 
     /**
@@ -38,8 +44,11 @@ class AnnuaireController extends AbstractController
      * @Route("/post/new", name="post_create")
      * @Route("post/{id}/edit", name="post_edit")
      */
-    public function form(Post $post = null,Request $request, ObjectManager $manager) {
+    public function formPost(Post $post = null,Request $request, ObjectManager $manager) {
 
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        $user = $this->getUser();
         if(!$post){
             $post = new Post();
         }
@@ -53,6 +62,7 @@ class AnnuaireController extends AbstractController
                 $post->setCreatedAt(new \DateTime());
             }
 
+            $post->setUser($user);
             $manager->persist($post);
             $manager->flush();
 
@@ -65,6 +75,6 @@ class AnnuaireController extends AbstractController
             'formPost' => $form->createView(),
             'editMode' => $post->getId() !== null
         ]);
-    }
+    }    
 
 }

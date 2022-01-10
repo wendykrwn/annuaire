@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="section user">
+        <div>
+            <img style="width: 200px;" class="card-img-top rounded-circle" src="{{ user.image}} responsive" alt="Card image cap">
+            <h2> {{ user.firstName }} {{ user.lastName }}<h2>
+            <h4 class="text-muted">{{ user.groupName.name }} - {{ user.groupName.promo }}</h3>
+        </div>
+        <div class="user-post">
+            <h3>Posts</h3>
+            A METTRE LES POST ICI !!!!!!!!!!
+        </div>
+        <div class="user user-info">
+            <h3>Info</h3>
+            <ul>
+                <li>Prénom : {{ user.firstName }}</li>
+                <li>Nom : {{ user.lastName }}</li>
+                <li>email : {{ user.email }}</li>
+                <li>Groupe : {{ user.groupName.name }}</li>
+                <li>Promo : {{ user.groupName.promo }}</li>
+                <li>Job en alternance : {{ user.alternanceJob }}</li>
+                <li>Date de naissance : {{ user.birthDate  | date('d/m/Y') }}</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
