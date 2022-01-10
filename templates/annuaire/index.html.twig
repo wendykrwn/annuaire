@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Hello AnnuaireController!{% endblock %}
 
 {% block body %}
-    <section class="posts mt-2">
+    <section class="posts justify-content-center ">
         {% for post in posts %}
             <article class="card p-3 my-2" style="width: 435px">
                 <div class="d-flex flex-row">
@@ -21,4 +22,5 @@
             </article>
         {% endfor %}
     </section>
+    
 {% endblock %}
