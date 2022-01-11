@@ -66,6 +66,9 @@ class AnnuaireController extends AbstractController
             $manager->persist($post);
             $manager->flush();
 
+            
+            $this->addFlash('success','Le post a bien été ajouté');
+
             return $this->redirectToRoute('posts');
         }
 

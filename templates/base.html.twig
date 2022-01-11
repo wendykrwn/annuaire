@@ -74,6 +74,11 @@
             </nav>
         {% endif %} 
         <div class="container">
+           {% for message in app.flashes('success') %}
+              <div style="margin-bottom:0;text-align:center;" class="alert alert-success">
+                {{message}}
+              </div>
+            {% endfor %}
           {% block body %}{% endblock %}
         </div>
     </body>
