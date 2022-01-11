@@ -1,0 +1,9 @@
+ {{ form_start(formPost) }}
+        {{ form_row(formPost.content, {'attr': {'placeholder': "Quoi de neuf docteur ?"}}) }}
+        {{ form_row(formPost.image, {'attr': {'placeholder': "Url de l'image"}}) }}
+
+        <button type="Submit" class="btn btn-primary mt-2">
+            Publier
+        </button>    
+
+{{ form_end(formPost) }} 

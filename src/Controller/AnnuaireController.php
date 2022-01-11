@@ -17,15 +17,36 @@ class AnnuaireController extends AbstractController
     /**
      * @Route("/posts", name="posts")
      */
-    public function index(PostRepository $repo): Response
+    public function index(PostRepository $repo,Request $request, ObjectManager $manager): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $posts = $repo->findBy(array(), array('createdAt' =>'DESC'));
 
+        $user = $this->getUser();
+        $post = new Post();
+
+        $form = $this->createForm(PostType::class, $post);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $post->setCreatedAt(new \DateTime());
+
+            $post->setUser($user);
+            $manager->persist($post);
+            $manager->flush();
+
+            
+            $this->addFlash('success','Le post a bien été ajouté');
+
+            return $this->redirectToRoute('posts');
+        }
+
         
         return $this->render('annuaire/index.html.twig', [
             'controller_name' => 'AnnuaireController',
-            'posts' => $posts
+            'posts' => $posts,
+            'formPost' => $form->createView()
         ]);
     }
 

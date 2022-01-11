@@ -8,18 +8,6 @@
             Création d'un post
         {% endif %}
     </h1>
-    {{ form_start(formPost) }}
+    {{ include('_post_form.html.twig')}}
 
-        {{ form_row(formPost.content, {'attr': {'placeholder': "Quoi de neuf docteur ?"}}) }}
-        {{ form_row(formPost.image, {'attr': {'placeholder': "Url de l'image"}}) }}
-
-        <button type="Submit" class="btn btn-primary mt-2">
-            {% if editMode %}
-                Enregister
-            {% else %}
-                Publier
-            {% endif %}
-        </button>    
-
-    {{ form_end(formPost) }} 
 {% endblock %}
