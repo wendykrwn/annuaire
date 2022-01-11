@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="col-md-3">
+        {{ form_start(form) }}
+            {{ form_widget(form.qFirstName) }}
+            {{ form_widget(form.qLastName) }}
+            <button type="submit" class="btn btn-primary w-100">Filtrer</button>
+        {{ form_end(form) }}
+    </div>
     <section class="users">
         <h1>Utilisateurs</h1>
         <div class="users card-container d-flex flex-row flex-wrap justify-content-center">
@@ -19,5 +26,8 @@
                 </div>
             {% endfor %}
         </div>
+          <div class="pagination">
+             {{ knp_pagination_render(users) }}
+          </div>
     </section>
 {% endblock %}

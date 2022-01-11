@@ -3,8 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Data\SearchData;
+use App\Form\SearchType;
 use App\Repository\UserRepository;
 use Doctrine\Persistence\ObjectManager;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,15 +18,27 @@ class UserController extends AbstractController
     /**
      * @Route("/users", name="users")
      */
-    public function index(UserRepository $repo): Response
+    public function index(UserRepository $repo,Request $request,PaginatorInterface $paginator): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        $users = $repo->findAll();
+        $data = new SearchData();
+        $data->page = $request->get('page',1);
+        $form = $this->createForm(SearchType::class, $data);
+        $form->handleRequest($request);
+
+        $users = $repo->findQueryResult($data, $paginator);
+
+        if($form->get('clear')->isClicked()){
+            return $this->redirectToRoute('users');
+        }
+
+        // $users = $repo->findAll();
 
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
-            'users' => $users
+            'users' => $users,
+            'form' => $form->createView()
         ]);
     }
 

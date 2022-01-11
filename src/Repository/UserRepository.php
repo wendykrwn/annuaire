@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\User;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Data\SearchData;
+use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +20,33 @@ class UserRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
+    }
+
+    public function getSearchQuery(SearchData $search){
+        $query = $this->createQueryBuilder('r');
+        if(!empty($search->qFirstName)){
+            $query = $query->andWhere('r.firstName LIKE :qFirstName')
+                           ->setParameter('qFirstName', "%{$search->qFirstName}%")
+                            ;
+        }
+        if(!empty($search->qLastName)){
+            $query = $query->andWhere('r.lastName LIKE :qLastName')
+                           ->setParameter('qLastName', "%{$search->qLastName}%")
+                            ;
+        }
+        return $query;
+    }
+
+
+    public function findQueryResult(SearchData $search,PaginatorInterface $paginator)
+    {
+        $query =  $this->getSearchQuery($search)->getQuery();
+
+        return $paginator->paginate(
+            $query,
+            $search->page,
+            10
+        );
     }
 
     // /**
