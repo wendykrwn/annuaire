@@ -53,8 +53,7 @@ class PostFixtures extends Fixture
                 // Créer entre 0 et 10 posts par utilisateur
                 for($k = 1; $k <= mt_rand(0,10); $k++){
                     $post = new Post();
-                    $post->setName($faker->sentence())
-                         ->setContent($faker->paragraph())
+                    $post->setContent($faker->paragraph())
                          ->setImage('https://images.unsplash.com/photo-1548247416-ec66f4900b2e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80')
                          ->setCreatedAt($faker->dateTimeBetween('-6 months'))
                          ->setUser($user)

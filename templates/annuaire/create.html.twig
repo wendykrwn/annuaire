@@ -10,8 +10,7 @@
     </h1>
     {{ form_start(formPost) }}
 
-        {{ form_row(formPost.name, {'attr': {'placeholder': "Nom du post"}}) }}
-        {{ form_row(formPost.content, {'attr': {'placeholder': "Description du post "}}) }}
+        {{ form_row(formPost.content, {'attr': {'placeholder': "Quoi de neuf docteur ?"}}) }}
         {{ form_row(formPost.image, {'attr': {'placeholder': "Url de l'image"}}) }}
 
         <button type="Submit" class="btn btn-primary mt-2">
