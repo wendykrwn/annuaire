@@ -45,6 +45,12 @@ h3{
     font-family: 'FontAwesome';
     font-size: 18px;
 }
+.profiles{
+    margin-left: 5px;
+    border: 1px solid #ff5c39;
+    border-radius: 10px;
+    padding: 2px 2px 2px 2px;
+}
 #test {
     background: #ff5c39;
     padding: 0;
@@ -55,6 +61,7 @@ h3{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    margin: 0;
  }
 
 
@@ -64,12 +71,6 @@ h3{
 }
 .profile-header-info{
     color: white;
-}
-.profile-header-img {
-    float: left;
-    overflow: hidden;
-    position: relative;
-
 }
 .profile-header-img {
     margin: 1% 0 0 0;
