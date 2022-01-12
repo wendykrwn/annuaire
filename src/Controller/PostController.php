@@ -13,9 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-/**
- * @Route("/post")
- */
 class PostController extends AbstractController
 {
     /**
@@ -76,7 +73,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/newadd", name="post_new", methods={"GET", "POST"})
+     * @Route("post/newadd", name="post_new", methods={"GET", "POST"})
      */
     public function new(Request $request,  ObjectManager $manager): Response
     {
@@ -130,7 +127,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="post_show", methods={"GET"})
+     * @Route("post/{id}", name="post_show", methods={"GET"})
      */
     public function show(Post $post): Response
     {
@@ -140,7 +137,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="post_edit", methods={"GET", "POST"})
+     * @Route("post/{id}/edit", name="post_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Post $post, EntityManagerInterface $entityManager): Response
     {
@@ -182,7 +179,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="post_delete", methods={"POST"})
+     * @Route("post/{id}", name="post_delete", methods={"POST"})
      */
     public function delete(Request $request, Post $post, EntityManagerInterface $entityManager): Response
     {
@@ -195,7 +192,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/supprime/image/{id}", name="annonces_delete_image", methods={"DELETE"})
+     * @Route("post/supprime/image/{id}", name="annonces_delete_image", methods={"DELETE"})
      */
     public function deleteImage(Images $image, Request $request){
         $data = json_decode($request->getContent(), true);

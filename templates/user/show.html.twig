@@ -4,7 +4,11 @@
     <div class="" id="test">
         <div class="profile-header-content d-flex flex-row align-items-center">
             <div class="profile-header-img p-2">
-                <img style="width: 200px; height: 200px; object-fit: cover;" class="card-img-top rounded-circle" src="{{ app.user.image}} responsive" alt="Card image cap">
+                {% if user.image %}
+                <img style="width: 200px; height: 200px; object-fit: cover;" class="card-img-top rounded-circle" src="{{ user.image}}" alt="Card image cap">
+                {% else %}
+                <img style="width: 200px; height: 200px; object-fit: cover;" class="card-img-top rounded-circle" src="https://img.myloview.fr/stickers/humain-homme-personne-avatar-profil-utilisateur-vector-icon-illustration-700-80657983.jpg" alt="Card image cap">
+                {% endif %}
             </div>
         <div class="profile-header-info align-self-center p-4">
             <h2> {{ app.user.firstName }} {{ app.user.lastName }}<h2>
