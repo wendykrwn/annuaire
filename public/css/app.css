@@ -29,3 +29,10 @@ body{
     color:inherit;
     text-decoration: underline;
 }
+.reset::before{
+  content:"\f1f8" ;
+  font-family: 'FontAwesome';
+}
+.search{
+    
+}

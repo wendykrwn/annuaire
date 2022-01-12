@@ -40,10 +40,7 @@ class SearchType extends AbstractType
                     ]
             ])
             ->add('clear', SubmitType::class,[
-                'label'=>'Reset search',
-                'attr'=>[
-                    'class'=>'mt-2 btn btn-danger w-100'
-                ]
+                'label'=>' Reset search',
             ])
         ;
     }
