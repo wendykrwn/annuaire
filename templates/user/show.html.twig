@@ -35,9 +35,15 @@
             </section>
         </div>
          <div class="user col user-galerie">
-            <aricle class="card p-3 my-2" style="width: 435px">
+            <article class="card p-3 my-2 " style="width: 435px">
             <h3>Galerie</h3>
-                
+                <div class="d-flex flex-wrap justify-content-around">
+                    {% for post in app.user.posts %}
+                        {% for photo in post.photos %}
+                            <img style="width: 150px; height: 150px; object-fit: cover;" class="img-responsive my-2"  src="{{ asset('uploads/' ~ photo.name) }}" alt="post photo">
+                        {% endfor %}
+                {% endfor %}
+                </div>
             </article>
         </div>
     </div>
