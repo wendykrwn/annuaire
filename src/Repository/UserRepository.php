@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\User;
+use App\Entity\Group;
 use App\Data\SearchData;
+use Doctrine\ORM\Query\Expr\Join;
 use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\PaginatorInterface;
@@ -24,6 +26,8 @@ class UserRepository extends ServiceEntityRepository
 
     public function getSearchQuery(SearchData $search){
         $query = $this->createQueryBuilder('r');
+        $entityManager = $this->getEntityManager();
+
         if(!empty($search->qFirstName)){
             $query = $query->andWhere('r.firstName LIKE :qFirstName')
                            ->setParameter('qFirstName', "%{$search->qFirstName}%")
@@ -33,6 +37,13 @@ class UserRepository extends ServiceEntityRepository
             $query = $query->andWhere('r.lastName LIKE :qLastName')
                            ->setParameter('qLastName', "%{$search->qLastName}%")
                             ;
+        }
+        if(!empty($search->qGroupName)){
+            $query = $query ->addSelect('g')
+                            ->leftJoin('r.group_name', 'g')
+                            ->andWhere('g.name LIKE :qGroupName')
+                            ->setParameter('qGroupName', "%{$search->qGroupName}%")
+             ;
         }
         return $query;
     }

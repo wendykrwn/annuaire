@@ -3,8 +3,9 @@
 {% block body %}
     <div class="col-md-3">
         {{ form_start(form) }}
-            {{ form_widget(form.qFirstName) }}
-            {{ form_widget(form.qLastName) }}
+            {{ form_row(form.qFirstName) }}
+            {{ form_row(form.qLastName) }}
+            {{ form_row(form.qGroupName, {'attr':{'placeholder':"Groupe"}})}}
             <button type="submit" class="btn btn-primary w-100">Filtrer</button>
         {{ form_end(form) }}
     </div>

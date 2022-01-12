@@ -2,6 +2,8 @@
 
 namespace App\Data;
 
+use App\Entity\Group;
+
 class SearchData
 {
 
@@ -20,5 +22,10 @@ class SearchData
      * @var string
      */
     public $qLastName;
+
+    /**
+     * @var Group
+     */
+    public $qGroupName;
 
 }
