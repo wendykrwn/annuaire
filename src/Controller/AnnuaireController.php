@@ -50,17 +50,6 @@ class AnnuaireController extends AbstractController
         ]);
     }
 
-    
-    
-
-
-    /**
-     * @Route("/", name="home")
-     */
-    public function home() {
-        return $this->render('annuaire/home.html.twig');
-    }
-
     /**
      * @Route("/post/new", name="post_create")
      * @Route("post/{id}/edit", name="post_edit")
