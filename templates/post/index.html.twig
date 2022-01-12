@@ -3,11 +3,7 @@
 {% block title %}Post index{% endblock %}
 
 {% block body %}
-        <div class="profiles d-flex flex-row flex-wrap align-items-center justify-content-around w-25">
-            <img style="width: 50px; height: 50px; object-fit: cover;" class="card-img-top rounded-circle" src="{{ app.user.image}} responsive" alt="Card image cap">
-            <p> {{ app.user.firstName }} {{ app.user.lastName }}</p>
-            <p>{{ app.user.groupName.name }} - {{ app.user.groupName.promo }}</p>
-        </div>
+        
     <section class="crea justify-content-center ">
         <div class="card p-3 my-2" style="width: 435px">
             {{ include('post/_form.html.twig') }}
