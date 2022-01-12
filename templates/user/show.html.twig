@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-        <section class="profil mt-0 mw-100">
+    <section class="pr mt-0 mw-100">
         <div class="profile-header">
             <div class="profile-header-cover"></div>
                 <div class="profile-header-content d-flex flex-row ">
@@ -15,16 +15,9 @@
                 </div>
             </div>
         </div>
-    </section>
-        <div class="user-post justify-content-center">
-            <h3>Posts</h3>
-            <section class="posts ">
-            {% for post in user.posts %}
-              {{ include('_post.html.twig')}}
-            {% endfor %}
-    </section>
-        </div>
-        <div class="user user-info">
+        </section>
+    <div class="flexion row justify-content-center">
+     <div class="user col user-info">
             <h3>Info</h3>
             <ul>
                 <li>Prénom : {{ user.firstName }}</li>
@@ -36,5 +29,15 @@
                 <li>Date de naissance : {{ user.birthDate  | date('d/m/Y') }}</li>
             </ul>
         </div>
+        <div class="user-post col justify-content-center">
+            
+            <section class="posts ">
+                <h3>Posts</h3>
+                {% for post in user.posts %}
+                {{ include('_post.html.twig')}}
+                {% endfor %}
+            </section>
+        </div>
     </div>
+</div>
 {% endblock %}
