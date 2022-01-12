@@ -15,7 +15,7 @@
         <h1>Utilisateurs</h1>
         <div class="users card-container d-flex flex-row flex-wrap justify-content-center">
             {% for user in users %}
-                <div class="card m-2  " style="width: 250px;">
+                <div class="card m-2" style="width: 250px;">
                     {% if user.image %}
                         <img class="card-img-top" style="width: 250px; height: 250px; object-fit: cover;" src="{{ user.image}}" alt="Card image cap">
                     {% else %}

@@ -4,8 +4,7 @@
 {% block title %}Hello AnnuaireController!{% endblock %}
 
 {% block body %}
-
-        <div style="width: 435px">
+        <div>
             <img style="width: 200px; height: 200px; object-fit: cover;" class="card-img-top rounded-circle" src="{{ app.user.image}} responsive" alt="Card image cap">
             <h2> {{ app.user.firstName }} {{ app.user.lastName }}<h2>
             <h4 class="text-muted">{{ app.user.groupName.name }} - {{ app.user.groupName.promo }}</h3>

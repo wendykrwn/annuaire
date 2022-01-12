@@ -2,7 +2,9 @@ body{
     background-color: #f2f2f2;
     position: relative;
 }
-
+h3{
+    color:#007bff;
+}
 .navbar.custom-nav-fixed-top{
     /* background-color: orange; */
     position: -webkit-sticky;
