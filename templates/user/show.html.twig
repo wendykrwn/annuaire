@@ -1,21 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="section user">
-        <div>
-            <img style="width: 200px; height: 200px; object-fit: cover;" class="card-img-top rounded-circle" src="{{ user.image}} responsive" alt="Card image cap">
-            <h2> {{ user.firstName }} {{ user.lastName }}<h2>
-            <h4 class="text-muted">{{ user.groupName.name }} - {{ user.groupName.promo }}</h3>
+    <section class="pr mt-0 mw-100">
+        <div class="profile-header">
+            <div class="profile-header-cover"></div>
+                <div class="profile-header-content d-flex flex-row ">
+                    <div class="profile-header-img">
+                        <img style="width: 200px; height: 200px; object-fit: cover;" class="card-img-top rounded-circle" src="{{ app.user.image}} responsive" alt="Card image cap">
+                    </div>
+                    <div class="profile-header-info align-self-center p-4">
+                        <h2> {{ app.user.firstName }} {{ app.user.lastName }}<h2>
+                        <h4 class="text-muted">{{ app.user.groupName.name }} - {{ app.user.groupName.promo }}</h3>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="user-post justify-content-center">
-            <h3>Posts</h3>
-            <section class="posts ">
-            {% for post in user.posts %}
-              {{ include('_post.html.twig')}}
-            {% endfor %}
-    </section>
-        </div>
-        <div class="user user-info">
+        </section>
+    <div class="flexion row justify-content-center">
+     <div class="user col user-info">
             <h3>Info</h3>
             <ul>
                 <li>Prénom : {{ user.firstName }}</li>
@@ -27,5 +29,15 @@
                 <li>Date de naissance : {{ user.birthDate  | date('d/m/Y') }}</li>
             </ul>
         </div>
+        <div class="user-post col justify-content-center">
+            
+            <section class="posts ">
+                <h3>Posts</h3>
+                {% for post in user.posts %}
+                {{ include('_post.html.twig')}}
+                {% endfor %}
+            </section>
+        </div>
     </div>
+</div>
 {% endblock %}
