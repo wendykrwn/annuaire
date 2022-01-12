@@ -1,42 +1,45 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <section class="pr mt-0 mw-100">
-        <div class="profile-header">
-            <div class="profile-header-cover"></div>
-                <div class="profile-header-content d-flex flex-row ">
-                    <div class="profile-header-img">
-                        <img style="width: 200px; height: 200px; object-fit: cover;" class="card-img-top rounded-circle" src="{{ app.user.image}} responsive" alt="Card image cap">
-                    </div>
-                    <div class="profile-header-info align-self-center p-4">
-                        <h2> {{ app.user.firstName }} {{ app.user.lastName }}<h2>
-                        <h4 class="text-muted">{{ app.user.groupName.name }} - {{ app.user.groupName.promo }}</h3>
-                    </div>
-                </div>
+    <div class="" id="test">
+        <div class="profile-header-content d-flex flex-row align-items-center">
+            <div class="profile-header-img p-2">
+                <img style="width: 200px; height: 200px; object-fit: cover;" class="card-img-top rounded-circle" src="{{ app.user.image}} responsive" alt="Card image cap">
             </div>
+        <div class="profile-header-info align-self-center p-4">
+            <h2> {{ app.user.firstName }} {{ app.user.lastName }}<h2>
+            <h4 class="text-">{{ app.user.groupName.name }} - {{ app.user.groupName.promo }}</h3>
         </div>
-        </section>
+    </div>
+    </div>
     <div class="flexion row justify-content-center">
      <div class="user col user-info">
+            <aricle class="card p-3 my-2" style="width: 435px">
             <h3>Info</h3>
-            <ul>
-                <li>Prénom : {{ user.firstName }}</li>
-                <li>Nom : {{ user.lastName }}</li>
-                <li>email : {{ user.email }}</li>
-                <li>Groupe : {{ user.groupName.name }}</li>
-                <li>Promo : {{ user.groupName.promo }}</li>
-                <li>Job en alternance : {{ user.alternanceJob }}</li>
-                <li>Date de naissance : {{ user.birthDate  | date('d/m/Y') }}</li>
-            </ul>
+                <ul>
+                    <li> Prénom : {{ user.firstName }}</li>
+                    <li> Nom : {{ user.lastName }}</li>
+                    <li> email : {{ user.email }}</li>
+                    <li> Groupe : {{ user.groupName.name }}</li>
+                    <li> Promo : {{ user.groupName.promo }}</li>
+                    <li> Job en alternance : {{ user.alternanceJob }}</li>
+                    <li> Date de naissance : {{ user.birthDate  | date('d/m/Y') }}</li>
+                </ul>
+            </article>
         </div>
         <div class="user-post col justify-content-center">
-            
             <section class="posts ">
                 <h3>Posts</h3>
                 {% for post in user.posts %}
-                {{ include('_post.html.twig')}}
+                    {{ include('post/_post.html.twig') }}
                 {% endfor %}
             </section>
+        </div>
+         <div class="user col user-info">
+            <aricle class="card p-3 my-2" style="width: 435px">
+            <h3>Galerie</h3>
+                
+            </article>
         </div>
     </div>
 </div>
