@@ -13,14 +13,11 @@
      {{ form_start(formPost) }}
  
         {{ form_row(formPost.content, {'label':false,'attr': {'placeholder': "Quoi de neuf docteur ?"}}) }}
-        {{ form_row(formPost.image, {'attr': {'placeholder': "Url de l'image"}}) }}
-        <input type="file" accept="image/*">importer</input>
+        {{ form_row(formPost.photos, {'attr': {'placeholder': "Url de l'image"}}) }}
         <button type="Submit" class="btn btn-primary mt-2">
             Publier
         </button>    
 
     {{ form_end(formPost) }} 
-        {# <div class="mb-2">{{ app.content }}</div>
-        <img style="width: 100%" class="img-responsive" src={{ post.image }} alt="image"> #}
     </div>
 </article>

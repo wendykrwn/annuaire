@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post index{% endblock %}
+
+{% block body %}
+
+    <section class="crea justify-content-center ">
+        <div class="card p-3 my-2" style="width: 435px">
+            {{ include('post/_form.html.twig') }}
+        </div>
+    </sectiion>
+    <section class="posts justify-content-center ">
+        {% for post in posts %}
+            {{ include('post/_post.html.twig') }}
+        {% endfor %}
+    </section>
+{% endblock %}
