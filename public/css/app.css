@@ -2,8 +2,13 @@ body{
     background-color: #f2f2f2;
     position: relative;
 }
+
 h3{
     color:#007bff;
+}
+.container{
+    margin-top: 0;
+    width: 100%;
 }
 .navbar.custom-nav-fixed-top{
     /* background-color: orange; */

@@ -21,13 +21,14 @@ class PostFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = \Faker\Factory::create("fr_FR");
-
+        $groupes = ["M1TL","M2TL","M1DA","M1DMM","M1UX"];   
+        $promos = ["2018-2019","2019-2020","2020-2021","2021-2022"];
         // Créer 3 group fakées
         for($i = 1; $i <= 3; $i++) {
             $group_name = new Group();
 
-            $group_name->setName($faker->word)
-                       ->setPromo($faker->word);
+            $group_name->setName($groupes[mt_rand(1,count($groupes))  - 1])
+                       ->setPromo($promos[mt_rand(1,count($promos)) - 1]);
 
             $manager->persist($group_name);
 
