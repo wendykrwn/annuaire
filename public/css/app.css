@@ -40,7 +40,9 @@ h3{
 .navbar a{
     color: white;
 }
-
+.nav-link {
+    font-size: 20px;
+}
 .posts .custom-link .title-hover-underline:hover{
     color:inherit;
     text-decoration: underline;
