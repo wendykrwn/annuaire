@@ -4,10 +4,9 @@ Digit'Annuaire
 Bienvenue sur **Digit'annuaire**, Une application web fait en **Symfony** qui permet de partager des posts et des photos entre les étudiants de votre établissement.
 
 
-*****************
 
 ## Installation
-*************
+
 
 - [Installer Symfony](https://symfony.com/doc/current/setup.html) avec Composer ([Voir les dépendances requises](https://symfony.com/doc/current/setup.html#technical-requirements)).
 
@@ -22,7 +21,7 @@ php bin/console d:f:l
 ```
 
 ## Lancement 
-***********
+
 
 Lancer les commandes suivante : 
 
