@@ -92,7 +92,7 @@
                     </div>
                 </fieldset>
                     {{ form_row(form.image, {'label':'Photo de Profil' ,'attr':{'placeholder':"Url de l'image"}})}}
-                    {% if editMode %}
+                    {% if editMode and app.user.userProfile %}
                         <h2>Votre Photo de Profil</h2>
                         <div>
                             <img src="{{ asset('/uploads/' ~ app.user.userProfile.name) }}" class="responsive" alt="" width="150">
