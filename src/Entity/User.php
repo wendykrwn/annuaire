@@ -91,6 +91,11 @@ class User implements UserInterface
      */
     private $posts;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Photos::class, inversedBy="user", cascade={"persist", "remove"})
+     */
+    private $userProfile;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -266,6 +271,18 @@ class User implements UserInterface
                 $post->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUserProfile(): ?Photos
+    {
+        return $this->userProfile;
+    }
+
+    public function setUserProfile(?Photos $userProfile): self
+    {
+        $this->userProfile = $userProfile;
 
         return $this;
     }

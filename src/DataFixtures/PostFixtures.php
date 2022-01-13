@@ -21,13 +21,13 @@ class PostFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = \Faker\Factory::create("fr_FR");
-        $groupes = ["M1TL","M2TL","M1DA","M1DMM","M1UX"];   
+        $groupes = ["M1TL","M2DM","M1UX","M2TL","M1UX"];   
         $promos = ["2018-2019","2019-2020","2020-2021","2021-2022"];
         // Créer 3 group fakées
         for($i = 1; $i <= 3; $i++) {
             $group_name = new Group();
 
-            $group_name->setName($groupes[mt_rand(1,count($groupes))  - 1])
+            $group_name->setName($groupes[$i])
                        ->setPromo($promos[mt_rand(1,count($promos)) - 1]);
 
             $manager->persist($group_name);
@@ -42,8 +42,7 @@ class PostFixtures extends Fixture
                      ->setAddress($faker->address)
                      ->setCity($faker->city)
                      ->setAlternanceJob($faker->jobTitle)
-                    //  ->setImage($faker->imageUrl(640, 480))
-                     ->setImage('https://images.unsplash.com/photo-1546069901-d5bfd2cbfb1f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80')
+                     ->setImage($faker->imageUrl(640, 480))
                      ->setBirthDate($faker->dateTimeBetween('-30 years', '-15 years'))
                      ->setPassword($this->encoder->encodePassword($user, $faker->password(8)))
                      ->setGroupName($group_name)
