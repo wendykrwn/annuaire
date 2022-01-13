@@ -9,6 +9,7 @@ body{
     background-color: #f2f2f2;
     position: relative;
     font-family: 'EB Garamond', 'Outfit', sans-serif;
+    height: 100%;
 }
 .container{
     padding: 0;
@@ -85,8 +86,11 @@ h3{
 }
 
 .authentication{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: var(--primary);
     position: relative;
 }
@@ -94,10 +98,13 @@ h3{
 .authentication .authentication-container{
     background-color: #fff;
     width: 870;
-    height: 614;
+    height: auto;
     border-radius: 5px;
 }
 
+.registration.authentication .authentication-container{
+    /* height: 1200px; */
+}
 
 .authentication .authentication-container > div {
     width: 100%;
@@ -109,10 +116,14 @@ h3{
     font-weight: 600;
 }
 
+
 .authentication .form{
-    width: 400px;
+    width: 600px;
 }
 
+.registration.authentication .form{
+    width: 700px;
+}
 .form-container{
     width: 100%;
 }

@@ -28,15 +28,13 @@ class RegistrationType extends AbstractType
             ->add('address')
             ->add('city')
             ->add('alternanceJob')
-            ->add('birthDate', BirthdayType::class, [
-                'format' => 'ddMMyyyy',
-                'placeholder' => [
-                    'year' => 'année',
-                    'month' => 'mois',
-                    'day' => 'jour'
-                ],
-                'html5'=> false
-            ])
+            ->add('birthDate', BirthdayType::class,[ 
+                'widget' => 'single_text',
+                          'html5' => false,
+                          'attr' => ['class' => 'js-datepicker'],
+                'required' => false
+                ])
+          
             ->add('image')
             ->add('password', PasswordType::class)
             ->add('confirm_password', PasswordType::class)
