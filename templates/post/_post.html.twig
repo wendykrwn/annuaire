@@ -9,10 +9,9 @@
     </a>
     </div>
     <div class="content my-2">
-        <div class="textt">{{ post.content }}</div>
+        <div class="mb-2 texte">{{ post.content }}</div>
             {% for photo in post.photos %}
                 <img style="width: 100%" class="img-responsive"  src="{{ asset('uploads/' ~ photo.name) }}" alt="post photo">
             {% endfor %}   
         </div>
-    </div>
 </article>
