@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="" id="test">
+<div class="user-profile">
+    <div class="profile-header">
         <div class="profile-header-content d-flex flex-row align-items-center">
             <div class="profile-header-img p-2">
                 {% if user.image %}
@@ -18,16 +19,18 @@
     </div>
     <div class="flexion row justify-content-center p-1">
      <div class="user col user-info">
-            <aricle class="card p-3 my-2" style="width: 435px">
-            <h3>Info</h3>
-                <ul>
-                    <li> Prénom : {{ user.firstName }}</li>
-                    <li> Nom : {{ user.lastName }}</li>
-                    <li> email : {{ user.email }}</li>
-                    <li> Groupe : {{ user.groupName.name }}</li>
-                    <li> Promo : {{ user.groupName.promo }}</li>
-                    <li> Job en alternance : {{ user.alternanceJob }}</li>
-                    <li> Date de naissance : {{ user.birthDate  | date('d/m/Y') }}</li>
+            <aricle class="card my-2" style="width: 435px">
+            <div class="card-header title-card-header">
+                <h4>Info</h4>
+            </div>
+                <ul class="p-3">
+                    <li> <span class="text-bold">Prénom</span> : {{ user.firstName }}</li>
+                    <li> <span class="text-bold">Nom</span> : {{ user.lastName }}</li>
+                    <li> <span class="text-bold">Email</span> : {{ user.email }}</li>
+                    <li> <span class="text-bold">Groupe</span> : {{ user.groupName.name }}</li>
+                    <li> <span class="text-bold">Promo</span> : {{ user.groupName.promo }}</li>
+                    <li> <span class="text-bold">Joben alternance</span>   : {{ user.alternanceJob }}</li>
+                    <li> <span class="text-bold">Date de naissance</span>  : {{ user.birthDate  | date('d/m/Y') }}</li>
                 </ul>
             </article>
         </div>
@@ -39,9 +42,11 @@
             </section>
         </div>
          <div class="user col user-galerie">
-            <article class="card p-3 my-2 " style="width: 435px">
-            <h3>Galerie</h3>
-                <div class="d-flex flex-wrap justify-content-around">
+            <aricle class="card my-2" style="width: 435px">
+                <div class="card-header title-card-header">
+                    <h4>Galérie</h4>
+                </div>
+                <div class="d-flex flex-wrap justify-content-around p-3">
                     {% for post in user.posts %}
                         {% for photo in post.photos %}
                             <img style="width: 150px; height: 150px; object-fit: cover;" class="img-responsive my-2"  src="{{ asset('uploads/' ~ photo.name) }}" alt="post photo">
