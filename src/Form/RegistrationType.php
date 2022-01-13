@@ -30,8 +30,9 @@ class RegistrationType extends AbstractType
             ->add('alternanceJob')
             ->add('birthDate', BirthdayType::class,[ 
                 'widget' => 'single_text',
-                          'html5' => false,
-                          'attr' => ['class' => 'js-datepicker'],
+                'format' => 'dd-MM-yyyy',
+                'html5' => false,
+                'attr' => ['class' => 'js-datepicker'],
                 'required' => false
                 ])
           
