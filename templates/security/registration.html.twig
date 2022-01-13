@@ -25,7 +25,6 @@
             </div>
 
             <h1 class="text-center mt-4">Inscription</h1>
-
             <div class="form-container d-flex justify-content-center">
                 {{ form_start(form, {'attr':{'class': 'form mt-5'}})}} 
                 {% if app.user %}
@@ -37,13 +36,14 @@
                         <p class="text-center">Tu as déjà un compte ?<a href="{{ path('security_login') }}"> Connecte toi ici 😉</a></p>
                     </div>
                 {% endif %}  
+                <p class="text-right"><span class="symbole-required">*</span> Champs obligatoires</p>
                 <fieldset class="border p-2 mb-2">
                     <legend class="w-auto">Information Personnel</legend> 
                     <div class="row pl-4 pr-4">
-                        <div class="col">
+                        <div class="col required">
                             {{ form_row(form.firstName, { 'label':'Prénom' ,'attr':{'placeholder':"Prénom"}})}}
                         </div>
-                        <div class="col">
+                        <div class="col required">
                             {{ form_row(form.lastName, {'label':'Nom' ,'attr':{'placeholder':"Nom"}})}}
                         </div>
                         <div class="col">
@@ -62,15 +62,15 @@
                 <fieldset class="border p-2 mb-2">
                     <legend class="w-auto">Information du compte</legend>
                     <div class="row pl-4 pr-4">
-                        <div class="col">
+                        <div class="col required">
                             {{ form_row(form.email, {'label':'Adresse Email' ,'attr':{'placeholder':"email@exemple.com"}})}}
                         </div>
                     </div>
                     <div class="row pl-4 pr-4">
-                        <div class="col">
+                        <div class="col required">
                             {{ form_row(form.password, {'label':'Mot de Passe' ,'attr':{'placeholder':"Mot de passe"}})}}
                         </div>
-                        <div class="col">
+                        <div class="col required">
                             {{ form_row(form.confirm_password, {'label':'Confirmation du mot de passe' ,'attr':{'placeholder':"Confirmation du mot de passe"}})}}
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                 <fieldset class="border p-2 mb-2">
                     <legend class="w-auto">Information Pédagogique</legend>
                     <div class="row pl-4 pr-4">
-                        <div class="col">
+                        <div class="col required">
                             {{ form_row(form.groupName, {'label':'Classe'})}}
                         </div>
                         <div class="col">
