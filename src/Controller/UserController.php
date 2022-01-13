@@ -18,7 +18,7 @@ class UserController extends AbstractController
     /**
      * @Route("/users", name="users")
      */
-    public function index(UserRepository $repo, Request $request, PaginatorInterface $paginator): Response
+    public function index(UserRepository $repo,Request $request,PaginatorInterface $paginator): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
