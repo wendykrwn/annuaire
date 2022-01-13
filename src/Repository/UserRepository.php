@@ -51,7 +51,9 @@ class UserRepository extends ServiceEntityRepository
 
     public function findQueryResult(SearchData $search,PaginatorInterface $paginator)
     {
-        $query =  $this->getSearchQuery($search)->getQuery();
+        $query =  $this->getSearchQuery($search)
+                       ->orderBy('RAND()')
+                       ->getQuery();
 
         return $paginator->paginate(
             $query,

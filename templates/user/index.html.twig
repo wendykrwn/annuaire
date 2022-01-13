@@ -1,18 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form_start(form , {'attr': {'class':'p-2 d-flex flex-row flex-wrap justify-content-center align-items-end' }}) }}
-        {{ form_row(form.qFirstName) }}
-        {{ form_row(form.qLastName, {'attr': {'class':'p-2' }}) }}
-        {{ form_row(form.qGroupName, {'attr':{'placeholder':"Groupe",'class':'p-2' }})}}
-        <button type="submit" class="btn btn-primary p-2 ">
-            <i class="fas fa-search"></i>
-            Filtrer
-        </button>
-        {{ form_row(form.clear, {'attr': {'class': 'reset mt-2 btn btn-danger w-100 p-2'}}) }}
-    {{ form_end(form) }} 
     <section class="users">
         <h1 class="text-center">Utilisateurs</h1>
+        <div class="search-container p-5">
+            {{ form_start(form) }}
+            <div class="input-group ">
+                <div>
+                    {{ form_row(form.qFirstName) }}
+                </div>
+                <div>
+                    {{ form_row(form.qLastName) }}
+                </div>
+                <div>
+                    {{ form_row(form.qGroupName)}}
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div>
+                    {{ form_row(form.clear, {'attr': {'class': 'reset btn btn-danger'}}) }}
+                </div>
+            </div>
+            {{ form_end(form) }} 
+        </div>
         <div class="users card-container d-flex flex-row flex-wrap justify-content-center">
             {% for user in users %}
                 <div class="card m-2" style="width: 250px;">

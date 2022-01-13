@@ -20,7 +20,7 @@ class SearchType extends AbstractType
                 'required'=>false,
                 'label'=>false,
                 'attr'=>[
-                    'placeholder'=>'Search by firstName'
+                    'placeholder'=>'Rechercher un prénom'
                     ]
                 ]
             )
@@ -28,7 +28,7 @@ class SearchType extends AbstractType
                 'required'=>false,
                 'label'=>false,
                 'attr'=>[
-                    'placeholder'=>'Search by lastName'
+                    'placeholder'=>'Rechercher un nom'
                     ]
                 ]
             )
@@ -36,11 +36,11 @@ class SearchType extends AbstractType
                 'required'=>false,
                 'label'=>false,
                 'attr'=>[
-                    'placeholder'=>'Search by group name'
+                    'placeholder'=>'Rechercher une classe'
                     ]
             ])
             ->add('clear', SubmitType::class,[
-                'label'=>' Reset search',
+                'label'=>false,
             ])
         ;
     }
