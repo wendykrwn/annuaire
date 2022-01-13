@@ -11,8 +11,8 @@
                 {% endif %}
             </div>
         <div class="profile-header-info align-self-center p-4">
-            <h2> {{ app.user.firstName }} {{ app.user.lastName }}<h2>
-            <h4 class="text-">{{ app.user.groupName.name }} - {{ app.user.groupName.promo }}</h3>
+            <h2> {{ user.firstName }} {{ user.lastName }}<h2>
+            <h4 class="text-">{{ user.groupName.name }} - {{ user.groupName.promo }}</h3>
         </div>
     </div>
     </div>
@@ -42,7 +42,7 @@
             <article class="card p-3 my-2 " style="width: 435px">
             <h3>Galerie</h3>
                 <div class="d-flex flex-wrap justify-content-around">
-                    {% for post in app.user.posts %}
+                    {% for post in user.posts %}
                         {% for photo in post.photos %}
                             <img style="width: 150px; height: 150px; object-fit: cover;" class="img-responsive my-2"  src="{{ asset('uploads/' ~ photo.name) }}" alt="post photo">
                         {% endfor %}
