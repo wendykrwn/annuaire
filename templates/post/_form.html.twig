@@ -1,7 +1,7 @@
 <article class="p-3 my-2" style="width: 100%">
     <a href="{{ path('user_show',{id:app.user.id}) }}" class="d-flex text-decoration-none text-dark">
     <div class="d-flex flex-row align-items-center">
-        <img class="rounded-circle" style="width: 45px; height: 45px; object-fit: cover;" src="{{ app.user.image ? app.user.image : "https://img.myloview.fr/stickers/humain-homme-personne-avatar-profil-utilisateur-vector-icon-illustration-700-80657983.jpg" }}" alt="profil picture">
+        <img class="rounded-circle" style="width: 45px; height: 45px; object-fit: cover;" src="{{ app.user.userProfile ? asset('/uploads/' ~  app.user.userProfile.name)  : "https://img.myloview.fr/stickers/humain-homme-personne-avatar-profil-utilisateur-vector-icon-illustration-700-80657983.jpg" }}" alt="profil picture">
         <div class="px-3 d-flex align-items-center">
             <h5 class="mb-0 text-capitalize">{{app.user.firstName}} {{app.user.lastName}}</h4>
         </div>
