@@ -6,6 +6,7 @@ use App\Entity\Post;
 use App\Entity\Photos;
 use App\Form\PostType;
 use App\Repository\PostRepository;
+use App\Repository\UserRepository;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,9 +19,11 @@ class PostController extends AbstractController
     /**
      * @Route("/", name="post_index", methods={"GET","POST"})
      */
-    public function index(PostRepository $postRepository, Request $request, ObjectManager $manager): Response
+    public function index(UserRepository $userRepository, PostRepository $postRepository, Request $request, ObjectManager $manager): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        $users = $userRepository->findAll();
 
         $user = $this->getUser();
         $post = new Post();
@@ -68,7 +71,8 @@ class PostController extends AbstractController
         }
         return $this->render('post/index.html.twig', [
             'posts' => $posts,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'users' => $users
         ]);
     }
 

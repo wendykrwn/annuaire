@@ -31,16 +31,25 @@
         </div>
         
         <div class="card p-3 d-flex flex-column align-items-center" style="width: 250px;">
-            <div class="my-2">
-                <img class="rounded-circle" style="width: 110px; height: 110px; object-fit: cover;"
-                src="{{ app.user.userProfile ? asset('/uploads/' ~  app.user.userProfile.name)  : "https://img.myloview.fr/stickers/humain-homme-personne-avatar-profil-utilisateur-vector-icon-illustration-700-80657983.jpg" }}">
+            <p>Vous connaissez peut-être...</p>
+            <div class="container-carrousel">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+
+                {% for key, user in users %}
+                    <div class="carousel-item {{key == 0 ? " active" : ""}}">
+                        <img style="width: 200px; height: 200px; object-fit: cover;"
+                                class="d-block"
+                                src="{{ user.userProfile ? asset('/uploads/' ~  user.userProfile.name) 
+                                : 
+                                "https://img.myloview.fr/stickers/humain-homme-personne-avatar-profil-utilisateur-vector-icon-illustration-700-80657983.jpg" }}">  
+                    </div>
+                {% endfor %}
+                </div>
+                </div>
+                {# src="{{ app.user.userProfile ? asset('/uploads/' ~  app.user.userProfile.name)  : "https://img.myloview.fr/stickers/humain-homme-personne-avatar-profil-utilisateur-vector-icon-illustration-700-80657983.jpg" }}">  #}
             </div>
-    
-            <div class="px-3 text-center my-3">
-                <h2 class="text-capitalize">{{app.user.firstName}} {{app.user.lastName}}</h2>
-                <div class="metadata text-muted"><span>{{ app.user.groupName.name}} - {{ app.user.groupName.promo}}</span></div>
-            </div>
-            <a href="{{ path('users') }}" class="btn btn-outline-success mt-2">Rechercher des étudiants</a>
+            <a href="{{ path('users') }}" class="btn btn-outline-success mt-4">Rechercher des étudiants</a>
         </div>
     </div>
 {% endblock %}
