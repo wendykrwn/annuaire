@@ -32,6 +32,17 @@
         </div>
         <div class="user-post col justify-content-center">
             <section class="posts ">
+                {% if user.posts | length < 1 %}
+                    <div class="card p-3 my-2 text-center" style="width: 435px">
+                        {% if  user.id == app.user.id %}
+                            <p>Oh ! Tu n'as encore rien posté.
+                                <a href="{{ path('post_index') }}">Créons-en un ! </a>
+                            </p>
+                        {% else %}
+                            <p>Aucun Post</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
                 {% for post in user.posts %}
                     {{ include('post/_post.html.twig') }}
                 {% endfor %}
@@ -43,6 +54,12 @@
                     <h4>Galérie</h4>
                 </div>
                 <div class="d-flex flex-wrap justify-content-around p-3">
+                    {% if user.id == app.user.id and user.posts | length < 1 %}
+                        <p class="text-center mt-2">
+                            <a href="{{ path('post_index') }}">Publie une photo</a> 
+                            dans un post pour les revoir ici 🙃
+                        </p>
+                    {% endif %}
                     {% for post in user.posts %}
                         {% for photo in post.photos %}
                             <img style="width: 150px; height: 150px; object-fit: cover;" class="img-responsive my-2"  src="{{ asset('uploads/' ~ photo.name) }}" alt="post photo">

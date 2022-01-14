@@ -165,3 +165,7 @@ h3{
 .text-bold{
     font-weight: bold;
 }
+
+.home-container{
+    justify-content: space-evenly;
+}
