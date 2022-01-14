@@ -192,9 +192,9 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("post/supprime/image/{id}", name="annonces_delete_image", methods={"DELETE"})
+     * @Route("post/supprime/image/{id}", name="post_delete_photos", methods={"DELETE"})
      */
-    public function deleteImage(Images $image, Request $request){
+    public function deleteImage(Photos $image, Request $request){
         $data = json_decode($request->getContent(), true);
 
         // On vérifie si le token est valide

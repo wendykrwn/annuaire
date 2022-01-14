@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Post;
 use App\Entity\Photos;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PhotosType extends AbstractType
@@ -13,7 +15,10 @@ class PhotosType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('post')
+            ->add('post', EntityType::class, [
+                'class' => Post::class,
+                'choice_label' => 'content'
+            ])
         ;
     }
 

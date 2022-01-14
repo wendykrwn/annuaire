@@ -31,10 +31,15 @@
                     <li> <span class="text-bold">Prénom</span> : {{ user.firstName }}</li>
                     <li> <span class="text-bold">Nom</span> : {{ user.lastName }}</li>
                     <li> <span class="text-bold">Email</span> : {{ user.email }}</li>
-                    <li> <span class="text-bold">Groupe</span> : {{ user.groupName.name }}</li>
+                    <li> <span class="text-bold">Classe</span> : {{ user.groupName.name }}</li>
                     <li> <span class="text-bold">Promo</span> : {{ user.groupName.promo }}</li>
-                    <li> <span class="text-bold">Joben alternance</span>   : {{ user.alternanceJob }}</li>
+                    <li> <span class="text-bold">Job en alternance</span>   : {{ user.alternanceJob ? user.alternanceJob : "aucun"}}</li>
                     <li> <span class="text-bold">Date de naissance</span>  : {{ user.birthDate  | date('d/m/Y') }}</li>
+
+                    {% if  user.id == app.user.id %}
+                    <li> <span class="text-bold">Adresse</span> : {{ user.address }}</li>
+                    <li> <span class="text-bold">City</span> : {{ user.city }}</li>        
+                    {% endif %}
                 </ul>
             </article>
         </div>
