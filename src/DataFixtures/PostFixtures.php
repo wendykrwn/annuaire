@@ -42,7 +42,6 @@ class PostFixtures extends Fixture
                      ->setAddress($faker->address)
                      ->setCity($faker->city)
                      ->setAlternanceJob($faker->jobTitle)
-                     ->setImage($faker->imageUrl(640, 480))
                      ->setBirthDate($faker->dateTimeBetween('-30 years', '-15 years'))
                      ->setPassword($this->encoder->encodePassword($user, $faker->password(8)))
                      ->setGroupName($group_name)
@@ -54,7 +53,6 @@ class PostFixtures extends Fixture
                 for($k = 1; $k <= mt_rand(0,10); $k++){
                     $post = new Post();
                     $post->setContent($faker->paragraph())
-                         ->setImage('https://images.unsplash.com/photo-1548247416-ec66f4900b2e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80')
                          ->setCreatedAt($faker->dateTimeBetween('-6 months'))
                          ->setUser($user)
                          ;
