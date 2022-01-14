@@ -3,15 +3,39 @@
 {% block title %}Post index{% endblock %}
 
 {% block body %}
-        
-    <section class="crea justify-content-center ">
-        <div class="card p-3 my-2" style="width: 435px">
-            {{ include('post/_form.html.twig') }}
+    <div class="user w-100">
+        <div class="flex-row">
+            <div class="col-md-1 w-100">
+                <div class="profile-sidebar card p-3 my-2" style="width: 250px">
+                    <div class="profile-userpic p-2">
+                        <img style="width: 100px; height: 100px; object-fit: cover;" class="card-img-center rounded-circle" src="{{ app.user.userProfile ? asset('/uploads/' ~  app.user.userProfile.name)  : "https://img.myloview.fr/stickers/humain-homme-personne-avatar-profil-utilisateur-vector-icon-illustration-700-80657983.jpg" }}" alt="profil picture">
+                    </di>
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            <p> {{ app.user.firstName }} {{ app.user.lastName }}<p>
+                        </div>
+                        <div class="profile-usertitle-job">
+                            <p class="text-">{{ app.user.groupName.name }} - {{ app.user.groupName.promo }}</p>
+
+                        </div>
+                    </div>
+                    <div class="profile-userbuttons">
+                        <a class="btn btn-primary btn-primary" href= "{{path('user_show',{id: app.user.id})}}" >View profil</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <section class="crea justify-content-center ">
+                    <div class="card p-3 my-2" style="width: 435px">
+                        {{ include('post/_form.html.twig') }}
+                    </div>
+                </sectiion>
+                <section class="posts justify-content-center ">
+                    {% for post in posts %}
+                        {{ include('post/_post.html.twig') }}
+                    {% endfor %}
+                </section>
+            </div>
         </div>
-    </sectiion>
-    <section class="posts justify-content-center ">
-        {% for post in posts %}
-            {{ include('post/_post.html.twig') }}
-        {% endfor %}
-    </section>
+    </div>
 {% endblock %}

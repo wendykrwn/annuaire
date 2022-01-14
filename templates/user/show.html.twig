@@ -5,16 +5,16 @@
     <div class="profile-header">
         <div class="profile-header-content d-flex flex-row align-items-center">
             <div class="profile-header-img p-2">
-                <img style="width: 200px; height: 200px; object-fit: cover;" class="card-img-top rounded-circle" src="{{ user.userProfile ? asset('/uploads/' ~  user.userProfile.name)  : "https://img.myloview.fr/stickers/humain-homme-personne-avatar-profil-utilisateur-vector-icon-illustration-700-80657983.jpg" }}" alt="profil picture">
+                <img style="width: 200px; height: 200px; object-fit: cover;" class="card-img-top " src="{{ user.userProfile ? asset('/uploads/' ~  user.userProfile.name)  : "https://img.myloview.fr/stickers/humain-homme-personne-avatar-profil-utilisateur-vector-icon-illustration-700-80657983.jpg" }}" alt="profil picture">
             </div>
-        <div class="profile-header-info align-self-center p-4">
-            <h2> {{ user.firstName }} {{ user.lastName }}<h2>
-            <h4 class="text-">{{ user.groupName.name }} - {{ user.groupName.promo }}</h3>
+            <div class="profile-header-info align-self-center p-4">
+                <h2> {{ user.firstName }} {{ user.lastName }}<h2>
+                <h4 class="text-">{{ user.groupName.name }} - {{ user.groupName.promo }}</h3>
+            </div>
         </div>
     </div>
-    </div>
     <div class="flexion row justify-content-center p-1">
-     <div class="user col user-info">
+        <div class="user col user-info">
             <aricle class="card my-2" style="width: 435px">
             <div class="card-header title-card-header">
                 <h4>Info</h4>
