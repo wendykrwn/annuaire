@@ -1,47 +1,25 @@
- {% block stylesheets %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spartan&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="{{ asset ('/css/app.css') }}">
-    {{ encore_entry_link_tags('app') }}
-{% endblock %}
-
-
+{% extends 'base.html.twig' %}
 
 {% block body %}
-    {% for message in app.flashes('success') %}
-        <div style="margin-bottom:0;text-align:center;" class="alert alert-success">
-            {{message}}
-        </div>
-    {% endfor %}
-<div class="authentication registration">
+<div class="authentication registration edit">
     <div class="authentication-container my-5">
         <div class="content">
-            <div class="nav d-flex justify-content-end">
-                <div class="btn-group">
-                    <button class="btn btn-outline-primary btn-sm custom-btn">
-                        <a href="{{ path('security_login') }}">Connexion</a>
-                    </button>
-                    <button class="btn btn-primary btn-sm">
-                        <a href="{{ path('security_registration') }}">Inscription</a>
-                    </button>
-                </div>
-            </div>
-
-            <h1 class="text-center mt-4">Inscription</h1>
+            <h1 class="text-center mt-4">Modification du profile</h1>
             <div class="form-container d-flex justify-content-center">
                 {{ form_start(form, {'attr':{'class': 'form mt-5'}})}} 
-                {% if app.user %}
-                    <div class="mb-3 text-center">
-                        Tu es connecté en tant que {{ app.user.username }}, <a href="{{ path('security_logout') }}">Se deconnecter ?</a>
+                <div class="mb-3 d-flex justify-content-between">
+                    <div>
+                        <h4 class="ml-2">Photo de Profil</h4>
+                        <div class="d-flex align-items-end">
+                            <img class="rounded-circle mx-3" alt="" style="width: 150px; height: 150px; object-fit: cover;" 
+                                 src="{{ app.user.userProfile ? asset('/uploads/' ~  app.user.userProfile.name)  : "https://img.myloview.fr/stickers/humain-homme-personne-avatar-profil-utilisateur-vector-icon-illustration-700-80657983.jpg" }}"
+                            >
+                        
+                            {{ form_row(form.userProfile, {'attr':{'placeholder':"Importer une nouvelle photo"}})}}
+                        </div>
                     </div>
-                {% else %}
-                    <div class="mb-5">
-                        <p class="text-center">Tu as déjà un compte ?<a href="{{ path('security_login') }}"> Connecte toi ici 😉</a></p>
-                    </div>
-                {% endif %}  
-                <p class="text-right"><span class="symbole-required">*</span> Champs obligatoires</p>
+                    <p class="text-right align-self-end"><span class="symbole-required">*</span> Champs obligatoires</p>
+                </div>
                 <fieldset class="border p-2 mb-2">
                     <legend class="w-auto">Information Personnel</legend> 
                     <div class="row pl-4 pr-4">
@@ -70,9 +48,6 @@
                         <div class="col required">
                             {{ form_row(form.email, {'label':'Adresse Email' ,'attr':{'placeholder':"email@exemple.com"}})}}
                         </div>
-                         <div class="col">
-                            {{ form_row(form.userProfile, {'label':'Photo de profil','attr':{'placeholder':"Importer une photo"}})}}
-                        </div>
                     </div>
                     <div class="row pl-4 pr-4">
                         <div class="col required">
@@ -95,7 +70,7 @@
                     </div>
                 </fieldset>
                     {{ form_row(form.image, {'label':'Photo de Profil' ,'attr':{'placeholder':"Url de l'image"}})}}
-                    <button type="submit" class="btn btn-primary mt-2 w-100">S'inscrire</button>
+                    <button type="submit" class="btn btn-primary mt-2 w-100">Enregistrer</button>
                 {{ form_end(form)}}
             </div>
 
@@ -103,8 +78,8 @@
     </div>
 </div>
 
-
 {% block javascripts %}
+<script src="{{ asset('js/images.js') }}"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

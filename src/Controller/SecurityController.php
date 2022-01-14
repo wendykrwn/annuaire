@@ -17,17 +17,10 @@ class SecurityController extends AbstractController
 {
     /**
      * @Route("/register", name="security_registration")
-     * @Route("/user/edit", name="security_user_edit")
      */
     public function form(Request $request, ObjectManager $manager,UserPasswordEncoderInterface $encoder){
-        
-        $user = $this->getUser();
-        if(!$user){
-            $user = new User();
-        }
-        else{
-            $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        }
+       
+        $user = new User();
 
         $form = $this->createForm(RegistrationType::class, $user);
 
@@ -60,9 +53,52 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('security_login');
         }
 
+        // return $this->render('security/registration.html.twig', [
         return $this->render('security/registration.html.twig', [
             'form' => $form->createView(),
-            'editMode' => $user->getId() !== null
+        ]);
+    }
+
+    /**
+     * @Route("/user/edit", name="security_user_edit")
+     */
+    public function edit(Request $request, ObjectManager $manager,UserPasswordEncoderInterface $encoder){
+        
+        $user = $this->getUser();
+
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        $form = $this->createForm(RegistrationType::class, $user);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $hash = $encoder->encodePassword($user, $user->getPassword());
+
+            $photo = $form->get('userProfile')->getData();
+            if($photo){
+                $fichier = md5(uniqid()).'.'.$photo->guessExtension();
+                
+                $photo->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+                    
+                $img = new Photos();
+                $img->setName($fichier);
+                $user->setUserProfile($img);
+            }
+           
+
+            $user->setPassword($hash);
+            $manager->persist($user);
+            $manager->flush();
+
+            $this->addFlash('success','Votre compte a bien été enregistré');
+        }
+
+        return $this->render('security/edit.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 
