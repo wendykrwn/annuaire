@@ -26,6 +26,9 @@
             </div>
             {{ form_end(form) }} 
         </div>
+        <div class="pagination">
+             {{ knp_pagination_render(users) }}
+          </div>
         <div class="users card-container p-5 d-flex flex-row flex-wrap justify-content-center">
             {% for user in users %}
                 <div class="card m-4" style="width: 250px;">
@@ -41,8 +44,6 @@
                 </div>
             {% endfor %}
         </div>
-          <div class="pagination">
-             {{ knp_pagination_render(users) }}
-          </div>
+          
     </section>
 {% endblock %}
