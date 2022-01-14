@@ -36,8 +36,6 @@ class RegistrationType extends AbstractType
                 'attr' => ['class' => 'js-datepicker'],
                 'required' => false
                 ])
-          
-            ->add('image')
             ->add('userProfile', FileType::class,[
                 'label' => false,
                 'multiple' => false,
